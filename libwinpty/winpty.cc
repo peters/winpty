@@ -461,7 +461,7 @@ WINPTY_API int winpty_start_process(winpty_t *pc,
                                     const wchar_t *appname,
                                     const wchar_t *cmdline,
                                     const wchar_t *cwd,
-                                    const wchar_t *env)
+                                    const std::wstring env)
 {
 
     WriteBuffer packet;
@@ -469,7 +469,7 @@ WINPTY_API int winpty_start_process(winpty_t *pc,
     packet.putWString(appname ? appname : L"");
     packet.putWString(cmdline ? cmdline : L"");
     packet.putWString(cwd ? cwd : L"");
-    packet.putWString(env ? env : L"");
+    packet.putWString(env);
     packet.putWString(getDesktopFullName());
     writePacket(pc, packet);
     return readInt32(pc);

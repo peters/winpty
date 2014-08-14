@@ -25,6 +25,7 @@
 
 #include <stdlib.h>
 #include <windows.h>
+#include <string>
 
 #ifdef WINPTY
 #define WINPTY_API __declspec(dllexport)
@@ -77,7 +78,7 @@ WINPTY_API int winpty_start_process(winpty_t *pc,
                                     const wchar_t *appname,
                                     const wchar_t *cmdline,
                                     const wchar_t *cwd,
-                                    const wchar_t *env);
+                                    const std::wstring env);
 
 /*
  * Returns the exit code of the process started with winpty_start_process,
